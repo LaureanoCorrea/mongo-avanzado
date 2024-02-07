@@ -1,0 +1,52 @@
+<div>
+	<h1>Listado de Productos</h1>
+	<table id='product_table'>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Precio</th>
+				<th>Código</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each products}}
+				<tr>
+					<td><a href='/productDetails/{{this._id}}'>{{this.title}}</a></td>
+					<td>{{this.description}}</td>
+					<td>$ {{this.price}}</td>
+					<td>{{this.code}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+	<div class='button-container'>
+		{{#if hasPrevPage}}
+			<a href='/products?page={{prevPage}}' class='button'>Anterior</a>
+		{{/if}}
+		<div class='page-number-container'>
+			<span class='page-number'>{{page}}</span>
+		</div>
+		{{#if hasNextPage}}
+			<a href='/products?page={{nextPage}}' class='button'>Siguiente</a>
+		{{/if}}
+	</div>
+
+	{{! <form id="myForm" action='/products' method='GET'>
+		<label for='limit'>Limit:</label>
+		<input type='number' id='limit' name='limit' value='10' /><br />
+
+		<label for='page'>Page:</label>
+		<input type='number' id='page' name='page' value='1' /><br />
+
+		<label for='sort'>Sort:</label>
+		<select id='sort' name='sort'>
+			<option value=''>None</option>
+			<option value='title'>Title</option>
+			<option value='price'>Price</option>
+			<option value='code'>Code</option>
+		</select><br />
+
+		<input type='submit' value='Submit' />
+	</form> }}
+</div>
